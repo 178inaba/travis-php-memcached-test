@@ -9,4 +9,4 @@ services:
   - memcached
 install:
   - composer install
-  - apt-get -y install php-memcache php-memcached
+  - sudo apt-get -y install php-memcache php-memcached
