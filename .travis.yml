@@ -11,4 +11,5 @@ before_install:
   - phpenv config-rm xdebug.ini
 install:
   - composer install
-  - pecl install memcache
+before_install:
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
