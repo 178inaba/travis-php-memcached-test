@@ -6,6 +6,8 @@ php:
   - nightly
 services:
   - memcached
+before_install:
+  - phpenv config-rm xdebug.ini
 install:
   - composer install
   - sudo apt-get -y install php-memcache php-memcached
