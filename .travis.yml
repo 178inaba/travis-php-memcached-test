@@ -11,5 +11,7 @@ before_install:
   - phpenv config-rm xdebug.ini
 install:
   - composer install
-before_install:
+before_script:
+  - phpenv config-add xdebug.ini
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo $TRAVIS_PHP_VERSION
