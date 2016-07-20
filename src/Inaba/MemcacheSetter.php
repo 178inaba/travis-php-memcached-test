@@ -7,8 +7,6 @@ use Memcached;
 
 class MemcacheSetter
 {
-    const PERSISTENT_ID = __NAMESPACE__.__CLASS__;
-
     /**
      * Setter.
      *
@@ -26,7 +24,7 @@ class MemcacheSetter
         }
 
         if (extension_loaded('memcached')) {
-            $md = new Memcached(self::PERSISTENT_ID);
+            $md = new Memcached;
             if (empty($md->getServerList())) {
                 $md->addServer('localhost', 11211);
             }
