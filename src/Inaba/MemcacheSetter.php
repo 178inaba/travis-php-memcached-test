@@ -2,6 +2,9 @@
 
 namespace Inaba;
 
+use Memcache;
+use Memcached;
+
 class MemcacheSetter
 {
     /**
