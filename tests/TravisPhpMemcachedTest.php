@@ -4,10 +4,16 @@ use PHPUnit\Framework\TestCase;
 
 class TravisPhpMemcachedTest extends TestCase
 {
+    /**
+     * @group none
+     */
     public function testNoMemcache()
     {
     }
 
+    /**
+     * @group memcache
+     */
     public function testMemcache()
     {
         $existExt = extension_loaded('memcache');
@@ -20,6 +26,9 @@ class TravisPhpMemcachedTest extends TestCase
         }
     }
 
+    /**
+     * @group memcached
+     */
     public function testMemcached()
     {
         $existExt = extension_loaded('memcached');
