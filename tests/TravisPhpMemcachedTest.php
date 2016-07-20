@@ -42,6 +42,7 @@ class TravisPhpMemcachedTest extends TestCase
         $cache = (new Memcached)->get($key);
 
         $this->assertSame($val, $ret);
+        var_dump($val, $cache);
         $this->assertSame($val, $cache);
     }
 }
