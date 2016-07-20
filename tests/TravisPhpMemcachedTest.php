@@ -1,14 +1,20 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Inaba\MemcacheSetter;
 
 class TravisPhpMemcachedTest extends TestCase
 {
     /**
      * @group none
      */
-    public function testNoMemcache()
+    public function testNone()
     {
+        $key = 'val';
+        $val = 'none';
+        $ret = MemcacheSetter::set($key, $val);
+
+        $this->assertSame($val, $ret);
     }
 
     /**
@@ -16,14 +22,13 @@ class TravisPhpMemcachedTest extends TestCase
      */
     public function testMemcache()
     {
-        $existExt = extension_loaded('memcache');
-        $this->assertTrue($existExt);
+        $key = 'val';
+        $val = 'memcache';
+        $ret = MemcacheSetter::set($key, $val);
+        $cache = (new Memcache)->get($key);
 
-        $m = null;
-        if ($existExt) {
-            echo "use memcache.\n";
-            $m = new Memcache();
-        }
+        $this->assertSame($val, $ret);
+        $this->assertSame($val, $cache);
     }
 
     /**
@@ -31,13 +36,12 @@ class TravisPhpMemcachedTest extends TestCase
      */
     public function testMemcached()
     {
-        $existExt = extension_loaded('memcached');
-        $this->assertTrue($existExt);
+        $key = 'val';
+        $val = 'memcached';
+        $ret = MemcacheSetter::set($key, $val);
+        $cache = (new Memcached)->get($key);
 
-        $m = null;
-        if ($existExt) {
-            echo "use memcached.\n";
-            $m = new Memcached();
-        }
+        $this->assertSame($val, $ret);
+        $this->assertSame($val, $cache);
     }
 }

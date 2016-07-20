@@ -6,18 +6,18 @@ class MemcacheSetter
 {
     /**
      * Setter.
-     * Key is 'val'.
      *
+     * @param  string  $key
      * @param  mixed  $val
      * @return mixed
      */
-    public function set($val)
+    public static function set(string $key, $val)
     {
         if (extension_loaded('memcache')) {
             $m = new Memcache();
             $m->addServer('localhost');
 
-            $m->set('val', $val);
+            $m->set($key, $val);
         }
 
         if (extension_loaded('memcached')) {
@@ -26,7 +26,7 @@ class MemcacheSetter
                 $md->addServer('localhost', 11211);
             }
 
-            $m->set('val', $val);
+            $m->set($key, $val);
         }
 
         return $val;
