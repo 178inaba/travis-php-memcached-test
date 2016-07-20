@@ -11,7 +11,7 @@ class MemcacheSetter
      * @param  mixed  $val
      * @return mixed
      */
-    public static function set(string $key, $val)
+    public static function set($key, $val)
     {
         if (extension_loaded('memcache')) {
             $m = new Memcache();
