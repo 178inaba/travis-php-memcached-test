@@ -29,7 +29,7 @@ class MemcacheSetter
                 $md->addServer('localhost', 11211);
             }
 
-            $m->set($key, $val);
+            $md->set($key, $val);
         }
 
         return $val;
