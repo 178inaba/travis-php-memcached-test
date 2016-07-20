@@ -4,7 +4,7 @@ php:
   - 5.6
   - 7.0
 #  - hhvm
-#  - nightly
+  - nightly
 env:
   - EXT=none
   - EXT=memcache
@@ -19,7 +19,6 @@ before_install:
   - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then printf "\n" | pecl install memcache; fi
   - if [[ $EXT = memcache ]]; then echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
   - if [[ $EXT = memcached ]]; then echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
-  - php --ini
 install:
   - composer install
 script:
