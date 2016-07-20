@@ -39,10 +39,10 @@ class TravisPhpMemcachedTest extends TestCase
         $key = 'val';
         $val = 'memcached';
         $ret = MemcacheSetter::set($key, $val);
-        $cache = (new Memcached)->get($key);
+        $md = new Memcached(MemcacheSetter::PERSISTENT_ID);
+        $cache = $md->get($key);
 
         $this->assertSame($val, $ret);
-        var_dump($val, $cache);
         $this->assertSame($val, $cache);
     }
 }
