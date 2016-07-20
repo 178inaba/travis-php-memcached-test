@@ -17,6 +17,6 @@ before_install:
 install:
   - composer install
 script:
-  - if [[ $EXT = none ]]; then vendor/bin/phpunit --testdox --group none; fi
-  - if [[ $EXT = memcache ]]; then vendor/bin/phpunit --testdox --group memcache; fi
-  - if [[ $EXT = memcached ]]; then vendor/bin/phpunit --testdox --group memcached; fi
+  - if [[ $EXT = none ]]; then vendor/bin/phpunit --group none; fi
+  - if [[ $EXT = memcache ]]; then vendor/bin/phpunit --group memcache; fi
+  - if [[ $EXT = memcached ]]; then vendor/bin/phpunit --group memcached; fi
