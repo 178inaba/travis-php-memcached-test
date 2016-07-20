@@ -12,7 +12,8 @@ env:
 services:
   - memcached
 before_install:
-  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - if [[ $ext = 'memcache' ]]; then echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
+  - if [[ $ext = 'memcached' ]]; then echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
 install:
   - composer install
 script: vendor/bin/phpunit --testdox
