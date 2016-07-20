@@ -17,14 +17,14 @@ class MemcacheSetter
     public static function set($key, $val)
     {
         if (extension_loaded('memcache')) {
-            $m = new Memcache();
+            $m = new Memcache;
             $m->addServer('localhost');
 
             $m->set($key, $val);
         }
 
         if (extension_loaded('memcached')) {
-            $md = new Memcached();
+            $md = new Memcached(__NAMESPACE__.__CLASS__);
             if (empty($md->getServerList())) {
                 $md->addServer('localhost', 11211);
             }
