@@ -9,6 +9,10 @@ env:
   - EXT=none
   - EXT=memcache
   - EXT=memcached
+matrix:
+  exclude:
+    - php: 7.0
+      env: EXT=memcache
 services:
   - memcached
 before_install:
