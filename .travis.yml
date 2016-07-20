@@ -13,10 +13,11 @@ matrix:
   exclude:
     - php: 7.0
       env: EXT=memcache
+    - php: nightly
+      env: EXT=memcache
 services:
   - memcached
 before_install:
-  - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then printf "\n" | pecl install memcache; fi
   - if [[ $EXT = memcache ]]; then echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
   - if [[ $EXT = memcached ]]; then echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
 install:
